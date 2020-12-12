@@ -23,8 +23,8 @@ class SwimmerEnv(mujoco_env.MujocoEnv, utils.EzPickle):
         return ob, reward, False, dict(reward_fwd=reward_fwd, reward_ctrl=reward_ctrl)
 
     def _get_obs(self):
-        qpos = self.model.data.qpos
-        qvel = self.model.data.qvel
+        qpos = self.sim.data.qpos
+        qvel = self.sim.data.qvel
         return np.concatenate([qpos.flat[2:], qvel.flat])
 
     def reset_model(self):
